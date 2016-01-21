@@ -1,0 +1,50 @@
+Predicting the Quality of Wine Using Physicochemical Parameters
+========================================================
+author: Valerii Podymov
+date: Jan 2016
+
+Application Structure
+========================================================
+
+The aim of the project is to explore the Random Forest technique in predicting of the quality of wines using physicochemical parameters.
+
+The application has the following tabs:
+
+* _Data Set_ displays a table with final clean dataset
+* _Exploratory Data Analysis_ shows how the quantitative variables normalized to be within the [0,1] range are distributed
+* _Random Forest_ demonstrates the results of predicting the quality of wine using the Random Forest classifier. A user can select the model parameters using intuitive UI.
+* _About_ gives details on the Wine Quality UCI Machine Learning dataset
+
+Data Set
+========================================================
+Original Data are the [Wine Quality UCI Machine Learning dataset](http://archive.ics.uci.edu/ml/datasets/Wine+Quality)
+
+```{r, echo=FALSE}
+red <- read.csv('http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv', header = TRUE, sep = ';')
+white <- read.csv('http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv', header = TRUE, sep = ';')
+red[, 'color'] <- 'red'
+white[, 'color'] <- 'white'
+wines <- rbind(red, white)
+wines$color <- as.factor(wines$color)
+```
+
+```{r}
+str(wines)
+```
+
+Random Forest Model
+========================================================
+
+![""](Test_Presentation-figure/unnamed-chunk-4-1.png)
+
+Summary
+========================================================
+The developed program allows a user to:
+
+- Visualize numerical features distribution 
+- Set the training set portion and a number of trees in the model
+- Preview the accuracy and variables importance
+
+The Shiny application is located at [http://podval.shinyapps.io/WineQuality/](https://podval.shinyapps.io/WineQuality/)
+
+The sourcecodes are available on [GitHub](http://github.com/vapodymov/DDP)

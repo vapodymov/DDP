@@ -1,6 +1,8 @@
 shinyServer(function(input, output) {
     library(caret)
     library(randomForest)
+    library(nnet)
+    library(e1071)
     
     red <- read.csv('http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv', header = TRUE, sep = ';')
     white <- read.csv('http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv', header = TRUE, sep = ';')
